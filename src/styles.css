@@ -1,0 +1,139 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+  height: 13px;
+  width: 13px;
+}
+
+button {
+  background-color: #fff;
+  border: 1px solid #888;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1.6em;
+  padding: 8px 25px;
+}
+
+.description {
+  font-size: 1.4em;
+  margin: 10px;
+}
+
+.description ul {
+  margin-bottom: 20px;
+}
+
+.description li {
+  padding-left: 20px;
+  position: relative;
+}
+
+.description li:before {
+  content: "-";
+  display: block;
+  left: 5px;
+  position: absolute;
+  top: -1px;
+}
+
+#lake {
+  border: 2px solid #0074d9;
+  border-radius: 5px;
+  float: left;
+  padding: 10px;
+  margin: 10px 10px 150px 10px;
+}
+
+#lake th {
+  font-size: 1.6em;
+  padding-bottom: 10px;
+}
+
+#lake td {
+  border: 1px solid #aaa;
+  height: 60px;
+  width: 60px;
+}
+
+#lake label {
+  cursor: pointer;
+  display: block;
+  height: 60px;
+}
+
+#lake input[type="checkbox"] {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 23px;
+}
+
+.legend {
+  float: left;
+  margin: 10px;
+}
+
+.legend ul {
+  margin-bottom: 80px;
+  overflow: hidden;
+}
+
+.legend li {
+  float: left;
+  margin-right: 10px;
+}
+
+.legend li strong {
+  display: inline-block;
+  font-size: 1.2em;
+}
+
+.frog {
+  background-color: #3d9970;
+  border: none;
+  display: block;
+  height: 60px;
+  position: relative;
+  width: 60px;
+}
+
+.frog:after {
+  content: " ";
+  display: block;
+  height: 10px;
+  position: absolute;
+  right: 5px;
+  width: 10px;
+  top: 5px;
+}
+
+.frog.female:after {
+  background-color: #85144b;
+}
+
+.frog.male:after {
+  background-color: #0074d9;
+}
