@@ -14,7 +14,7 @@ class Lake extends Component {
     // }
   }
 
-  preventSelectTwoFields = () => {
+  preventSelectThreeFields = () => {
     const { fields } = this.props;
     let merged = [].concat.apply([], fields).filter(position => {
       return position.check === true;
@@ -42,7 +42,7 @@ class Lake extends Component {
       return React.cloneElement(child, {
         updateLake: this.props.updateLake,
         fields: this.props.fields,
-        preventSelectTwoFields: this.preventSelectTwoFields,
+        preventSelectThreeFields: this.preventSelectThreeFields,
         cleanCheck: this.cleanCheck
       });
     });

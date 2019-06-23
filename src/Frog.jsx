@@ -4,66 +4,82 @@ import "./styles.css";
 
 class Frog extends Component {
   jump = newPosition => {
-    console.log("jump", this.props);
     let { fields } = this.props;
-    console.log(fields);
     let frog = { ...fields[this.props.lane][this.props.position] };
-    fields[this.props.lane][this.props.position].type = "field";
-    console.log("frog", frog);
+    // fields[this.props.lane][this.props.position].type = "field";
     let jumpTo = this.getJumpPosition();
-    console.log("jumpTo", jumpTo);
+    console.log("TCL: Frog -> jumpTo xx77", jumpTo)
 
-    if (jumpTo !== false) {
+    if (jumpTo !== undefined) {
       frog.lane = jumpTo.lane;
       frog.position = jumpTo.position;
       fields[jumpTo.lane][jumpTo.position] = frog;
       this.props.updateLake(fields);
       this.props.updateLake(this.props.cleanCheck(fields));
     } else {
-      this.props.updateLake(this.props.cleanCheck(fields));
+      // this.props.updateLake(this.props.cleanCheck(fields));
     }
   };
 
   getJumpPosition = () => {
     let { fields } = this.props;
-
     let jumpTo = {};
+    // fields.map(lakeLane => {
+    //   lakeLane.map(field => {
+    //     // console.log("TCL: Frog -> getJumpPosition -> field", fiel
+    //     if (field.check === true && field.empty === true && field.type === 'field') {
+    //       console.log('field TRUE', field.lane)
+    //       jumpTo.lane = field.lane;
+    //       jumpTo.position = field.position;
+    //     }
+    //   });
+    // });
+    for (let i = 0; i < fields.length; i++){
+      for (let a = 0; a < fields[i].length; a++){
+        if (fields[i][a].check === true && fields[i][a].empty === true && fields[i][a].type === 'field') {
+          // console.log('field TRUE', fields.lane)
+          jumpTo.lane = fields[i][a].lane;
+          jumpTo.position = fields[i][a].position;
+          return jumpTo;
+
+          break;
+        }
+      }
+    }
+
+
+  };
+
+  checkCanJump = () => {
+    let { fields } = this.props;
+    let canJump = false;
     fields.map(lakeLane => {
       lakeLane.map(field => {
-        if (field.check === true && field.type === "field") {
-          jumpTo.lane = field.lane;
-          jumpTo.position = field.position;
-        } else if (field.check === true && field.type === "frog") {
-          jumpTo = false;
+        // console.log("TCL: Frog -> getJumpPosition -> field", fiel
+        if (field.check === true && field.empty === true  && field.type === 'frog') {
+          console.log('field TRUE', field.lane)
+          canJump = true;
         }
       });
     });
+    return canJump;
+  }
 
-    return jumpTo;
-  };
-
-  checkInput = () => {
-    let { fields } = this.props;
-    fields[this.props.lane][this.props.position].check = true;
-    this.props.updateLake(fields);
-    this.props.preventSelectTwoFields(fields);
-  };
-
-  afterJumpPosition = () => {};
+  afterJumpPosition = () => { };
 
   render() {
     return (
       <>
-        <td>
-          <label className={"frog " + this.props.gender}>
-            <input
-              checked={this.props.check}
-              onChange={this.checkInput}
-              type="checkbox"
-            />
-            <button onClick={this.jump} />
-          </label>
-        </td>
+
+        <label className={"frog " + this.props.gender}>
+          <input
+            checked={this.props.check}
+            onChange={this.props.checkInput}
+            type="checkbox"
+          />
+          <button onClick={this.jump} />
+        </label>
+
       </>
     );
   }

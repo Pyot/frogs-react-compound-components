@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
 import "./styles.css";
 
@@ -13,7 +12,7 @@ class LakeLane extends Component {
       return React.cloneElement(child, {
         updateLake: this.props.updateLake,
         fields: this.props.fields,
-        preventSelectTwoFields: this.props.preventSelectTwoFields,
+        preventSelectThreeFields: this.props.preventSelectThreeFields,
         cleanCheck: this.props.cleanCheck
       });
     });
